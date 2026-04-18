@@ -21,7 +21,8 @@ app.use(
 
 app.use(express.json());
 
-connectDB();
+// Initialize database connection (non-blocking for serverless)
+connectDB().catch(console.error);
 
 // API Routes
 app.use("/api/v1/auth", authRoutes);
